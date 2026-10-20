@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semantic HTML Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <header>
+    <p class="site-title">Semantic HTML <span>/Demo</span></p>
+    <p>Every tag carries meaning</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#news">News</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <aside>
+    <p>On this page</p>
+    <ul>
+      <li>header</li>
+      <li>nav</li>
+      <li>main</li>
+      <li>section</li>
+      <li>article</li>
+      <li>aside</li>
+      <li>footer</li>
+    </ul>
+  </aside>
+
+  <main>
+    <section id="news">
+      <h2>Latest News</h2>
+
+      <article>
+        <header>
+          <h3>What is semantic HTML?</h3>
+          <p>Published 1 September 2026</p>
+        </header>
+        <p>Semantic HTML uses elements that describe the <em>meaning</em> of content, not just its appearance. This
+          improves <strong>accessibility</strong>, SEO, and maintainability.</p>
+      </article>
+
+      <article>
+        <header>
+          <h3>Why browsers care about structure</h3>
+          <p>Published 10 October 2026</p>
+        </header>
+        <p>The browser's accessibility tree is built from the DOM. Without semantic elements, assistive technologies
+          receive a flat, meaningless list of boxes.</p>
+      </article>
+    </section>
+
+    <section id="about">
+      <h2>About This Demo</h2>
+      <p>Every element on this page was chosen for its semantic meaning. Try replacing the divs with the correct
+        semantic elements and observe what changes in the browser's accessibility tree.
+      </p>
+    </section>
+  </main>
+
+<footer>
+  <p>Built for the FMI Frontend course. HTML Living Standard</p>
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset ="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+</head>
+
+<body>
+    <header>
+        <p>Semantic Form / Demo</p>
+        <h1>Student Registration</h1>
+    </header>
+    <main>
+        <form action="/register" method="post">
+            <fieldset>
+                <legend>Personal Information</legend>
+                <div>
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="full_name" placeholder="Viktor Stratiev">
+                </div>
+                <div>
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" name="email_address" placeholder="vik@example.com" required>
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" minlength="8" maxlength="25" placeholder="Min. 8 characters" required>
+                </div>
+                <div>
+                    <label for="date">Date of birth</label>
+                    <input type="date" id="date" name="date_of_birth" placeholder="19/10/2026">
+                </div>
+                <div> 
+                    <label for="phone">Phone number</label>
+                    <input type="tel" id="phone" name="phone_number" placeholder="+359 88 888 8888">
+                </div>
+            </fieldset>
+            
+            <fieldset>
+                <legend>Academic Details</legend>
+                <div>
+                    <label for="faculty-number">Faculty number</label>
+                    <input type="number" id="faculty-number" name="faculty_number" placeholder="81234" min="10000">
+                </div>
+                <div>
+                    <label for="year">Year of study</label>
+                    <input type="range" id="year" name="year_of_study" min="1" max="4" value="1">
+                </div>
+                <div>
+                    <label for="degree">Degree programme</label>
+                    <select id="degree" name="degree_programme" required>
+                        <option value="">-- choose --</option>
+                        <option value="bachelor">Bachelor</option>
+                        <option value="master">Master</option>
+                    </select>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Preferences</legend>
+                <div>
+                    <p>Preferred contact method</p>           
+                    <input type="radio" id="contact-email" name="contact_method" value="email" checked>
+                    <label for="contact-email">Email</label>
+                    <input type="radio" id="contact-phone" name="contact_method" value="phone">
+                    <label for="contact-phone">Phone</label>
+                    <input type="radio" id="contact-none" name="contact_method" value="none">
+                    <label for="contact-none">No contact</label>
+                </div>
+                <div>
+                    <p>Interests</p>
+                    <input type="checkbox" id="interest-web" name="interests" value="web_dev">
+                    <label for="interest-web">Web development</label>
+                    <input type="checkbox" id="interest-data" name="interests" value="data_science">
+                    <label for="interest-data">Data science</label>
+                    <input type="checkbox" id="interest-security" name="interests" value="security">
+                    <label for="interest-security">Security</label>
+                    <input type="checkbox" id="interest-game" name="interests" value="game_dev">
+                    <label for="interest-game">Game development</label>
+                </div>
+                <div>
+                    <label for="personal-website">Personal website</label>
+                    <input type="url" id="personal-website" name="personal_website" placeholder="https://example.com">
+                <div>
+                    <label for="bio">Short bio</label>
+                    <textarea id="bio" name="bio" placeholder="Tell us a little about yourself..."></textarea>
+                </div>
+                <div>
+                    <label for="photo">Profile photo</label>
+                    <input type="file" id="photo" name="profile_photo">
+                </div>
+            </fieldset>
+            <button type="reset">Clear</button>
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+    <footer>
+        <p>Built for the <strong>Frontend</strong> course</p>
+    </footer>
+</body>
+
+</html>
