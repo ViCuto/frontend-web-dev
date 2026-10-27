@@ -1,0 +1,376 @@
+/* ============================================
+   CSS Live Exercise — style.css
+   Start empty, students fill this in live!
+   ============================================ */
+
+/* Bonus Task: Add a custom font using Google Fonts (@import must be at the very top) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
+/* === Phase 0: Basic reset / good practice === */
+
+* {
+   margin: 0;
+   padding: 0;
+   /* Q: How to fix box-sizing globally? 
+      A: Apply border-box to all elements (*). */
+   box-sizing: border-box;
+}
+
+
+/* === Phase 1: Selectors & Colors === */
+
+h1, h3 {
+   /* Q: How to style two elements at the same time (OR logic)?
+      A: Combined selectors (OR logic using ',') */
+   color: darkblue;
+   font-size: 32px;
+}
+
+.card {
+   /* background-color: #3498db */
+   /* Q: What does the 4th value in rgba() mean?
+      A: 4th value (0.8) stands for alpha/opacity */
+   background-color: rgba(52, 152, 219, 0.8);
+}
+
+#badge {
+   background-color: red;
+   padding: 5px;
+}
+
+a:hover {
+   /* Q: What type of selector is :hover?
+      A: :hover is a pseudo-class */
+   color: orange;
+}
+
+.skills li:nth-child(even) {
+   /* Q: How to target elements inside another element and style every even item?
+      A: Descendant selector (.skills li) + structural pseudo-class (:nth-child) */
+   background-color: lightgray;
+}
+
+.box.box-border {
+   /* Q: How to select an element that has two classes at the same time (AND logic)?
+      A: Combined classes (AND logic - no space, targets the same element) */
+   color: rgb(255, 0, 149);
+}
+
+/* Q: Specificity conflict between tag (h2) and class (.subtitle) — which one wins and why?
+   A: Specificity conflict: .subtitle wins because classes (0.0.1.0) beat tags (0.0.0.1) */
+h2 {
+   color: blue;
+}
+
+.subtitle {
+   color: purple;
+}
+
+
+/* === Phase 2: CSS Variables === */
+
+:root {
+   --primary-color: pink;
+   --seconday-color: darkgreen;
+   --card-padding: 10px;
+   --font-size-base: 30px;
+}
+
+body {
+   /* Q: What is the syntax for a fallback value in var()?
+      A: Uses the fallback value '20px' if --unknown-font-size-base is missing */
+   font-size: var(--unknown-font-size-base, 20px);
+   color: var(--seconday-color);
+}
+
+.dark {
+   /* Q: How to create a dark theme using CSS variables?
+      A: Overwrite --primary-color inside a specific class (.dark). */
+   --primary-color: darkblue;
+}
+
+
+/* === Phase 3: Typography === */
+
+body {
+   /* Q: Why do we need fallback fonts in font-family?
+      A: If the first font isn't supported, the browser tries the next one. */
+   font-family: 'Roboto', Arial, "Times New Roman", sans-serif;
+}
+
+p {
+   /* font-size: 15px; */
+
+   /* Q: What is the difference between 'rem' and 'em'?
+      A: 'rem' is relative to root (<html>). 'em' is relative to parent. */
+   font-size: 2rem;
+
+   /* Q: Why set line-height without a unit (e.g., px)?
+      A: Acts as a multiplier. Prevents text overlapping if child elements have different font sizes. */
+   line-height: 1.5;
+}
+
+h2 {
+   font-weight: bold;
+   font-style: italic;
+}
+
+a {
+   text-decoration: none;
+}
+
+.site-header {
+   text-transform: uppercase;
+   letter-spacing: 5px;
+   text-align: center;
+}
+
+input::placeholder {
+   /* Q: What is the difference between ':' and '::'?
+      A: ':' (pseudo-class) targets an element's STATE (e.g., :hover). 
+         '::' (pseudo-element) targets a specific PART of an element (e.g., ::placeholder). */
+   color: rgb(255, 0, 0);
+}
+
+
+/* === Phase 4: Border, Border-Radius & Pseudo-elements === */
+
+.card {
+   /* Q: What are the 3 parts of the border shorthand property?
+      A: Border parts are width, style, and color. */
+   border: 2px double #000000;
+   border-radius: 10px;
+}
+
+.avatar {
+   border-radius: 50%;
+}
+
+.badge {
+   /* Q: What shape do we get with border-radius: 50%?
+      A: Creates a circle (if square) or an oval (if rectangular). */
+   border-radius: 50%;
+}
+
+.site-header {
+   border-bottom: 5px dotted #f60202;
+}
+
+.label::after {
+   /* Q: Why add decorative symbols with CSS (::after) instead of directly in HTML?
+      A: Injects decoration via CSS to keep HTML clean and maintainable. */
+   content: " *";
+   color: darkred;
+}
+
+.box-model-demo h3::before {
+   content: "📌 ";
+}
+
+
+/* === Phase 5: Box Model === */
+
+.card {
+   width: 400px;
+   background-color: var(--primary-color);
+
+   /* Q: Why did the card get bigger when we added padding? What is content-box?
+      A: Under default 'content-box', padding adds to the total width, making the element bigger. */
+   padding: 100px;
+   
+   /* Q: How does margin: 0 auto center the element?
+      A: 'auto' centers the element by evenly dividing the available horizontal space. */
+   margin: 0 auto;
+
+   margin-bottom: 40px;
+}
+
+.box-border {
+   box-sizing: border-box;
+}
+
+.content-box {
+   box-sizing: content-box;
+}
+
+.box {
+   background-color: #e0e0e0;
+}
+
+.site-header {
+   position: sticky; 
+   top: 0;
+}
+
+
+/* === Phase 6: Display & Flexbox === */
+
+.card-nav a {
+   /* Q: Why can't we set width on <a> tags by default, and what changes with inline-block?
+      A: Default 'inline' ignores width/height. 
+         'inline-block' allows padding and dimensions while staying on the same line. */
+   display: inline-block;
+   padding: 15px 15px;
+}
+
+.cookie-banner {
+   /* Q: What is the difference between display: none and visibility: hidden?
+      A: 'display: none' removes it from the layout entirely (though still in the DOM). 
+         'visibility: hidden' makes it invisible but leaves its empty space. */
+   /* display: none;
+   visibility: hidden; */
+   padding: 15px 20px;
+}
+
+.card-nav {
+   display: flex;
+
+   /* Q: Which property centers flex items horizontally?
+      A: Centers items horizontally along the main axis. */
+   justify-content: center;
+
+   /* Q: Which property centers flex items vertically?
+      A: Centers items vertically along the cross axis. */
+   align-items: center;
+   gap: 20px;
+}
+
+.skills {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 25px;
+}
+
+.skills li:first-child {
+   /* Q: How to change the visual order of a single flex item?
+      A: Use the 'order' property (higher numbers go to the end). */
+   order: 1;
+}
+
+.box-model-demo {
+   display: flex;
+   gap: 20px;
+}
+
+
+/* === Phase 7: Responsive Design === */
+
+.card {
+   /* Q: What does max-width do when combined with a percentage width?
+      A: Uses 90% of the screen width on small devices, but stops growing at 400px on larger screens. */
+   width: 90%;
+   max-width: 400px;
+}
+
+/* Q: What is a media query and how does it work?
+   A: A media query applies the enclosed styles ONLY when the screen width is 600px or smaller. */
+@media screen and (max-width: 600px) {
+   .card-nav {
+      flex-direction: column;
+   }    
+
+   body {
+      font-size: 0.9rem;
+   }
+
+   .box-model-demo {
+      /* Stacks the flex items vertically. */
+      flex-direction: column;
+   }
+}
+
+/* Q: What is the difference between responsive and adaptive design?
+   A: Responsive design is fluid and adapts continuously to any screen size (using percentages/flex). 
+      Adaptive design uses distinct, fixed layouts that only "jump" or change at specific screen widths. */
+
+
+/* === Phase 8: Positioning === */
+
+/* Q: What are the 5 values of 'position'?
+   A: The 5 values of 'position' are: static (default), relative, absolute, fixed, and sticky. */ 
+
+.card {
+   /* Q: Why was the badge in the wrong place? What was missing on the parent?
+      A: The parent needs position: relative to act as an anchor point for the absolute child. */
+   position: relative;
+}
+
+#badge {
+   /* Positions the element exactly outside the top-right corner of its nearest positioned parent. */
+   position: absolute;
+   top: -10px;
+   right: -10px;
+}
+
+.cookie-banner {
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+}
+
+/* Q: What is the difference between fixed and sticky?
+   A: 'fixed' locks the element to the screen permanently, ignoring scroll. 
+      'sticky' behaves normally until you scroll to it, then it sticks to the screen edge. */
+
+
+/* === Phase 9: Transitions & Animations === */
+
+.card {
+   /* Q: What are the 4 values of transition?
+      A: property (box-shadow), duration (0.3s), timing-function (ease-in-out), and delay (optional). */
+   transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes pulse {
+   from { transform: scale(1); }
+   to   { transform: scale(1.15); }
+}
+
+#badge {
+   animation: pulse 0.8s ease-in-out infinite alternate;
+}
+
+/* Q: What do 'alternate' and 'infinite' do in an animation?
+   A: 'infinite' loops the animation forever. 
+      'alternate' plays it forward then backward. */
+
+.card-nav a {
+   transition: color 0.3s ease; 
+}
+
+.card-nav a:hover {
+   color: #1ce061;
+}
+
+
+/* === Phase 10: Bonus Tasks === */
+
+.site-header {
+   /* Q: How to add a gradient background instead of a solid color? */
+   background: linear-gradient(to right, #ff7e5f, #feb47b);
+}
+
+.skills li:not(:first-child) {
+   /* Q: How to style all items except the first one? */
+   border-left: 2px solid #00c3ff;
+   padding-left: 10px;
+}
+
+.card.featured {
+   /* Q: How to change CSS variables only for a specific component?
+      A: Redefine the variable inside the specific class selector. */
+   --primary-color: #ffd700;
+}
+
+/* Alternative way to load custom fonts if you have the font file locally or on a server: */
+@font-face {
+   font-family: 'MyRemoteFont';
+   src: url('https://www.example.com/fonts/my-custom-font.woff2');
+}
